@@ -1,0 +1,15 @@
+The original verifier only checks that /app/report.json exists and is non-empty. An agent could pass by writing any content, for example:
+
+This would incorrectly pass the original verifier:
+
+Shell
+
+echo "hello" > /app/report.json
+
+or
+
+Shell
+
+echo '{"foo":123}' > /app/report.json
+
+Those outputs are non-empty files, so both tests would pass even though the task requirements were not satisfied.
