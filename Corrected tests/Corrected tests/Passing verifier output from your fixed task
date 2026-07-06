@@ -1,0 +1,31 @@
+Run:
+
+harbor run -p log-report -a oracle
+
+Then paste:
+
+reward.txt
+1
+
+CTRF summary:
+
+Passed: 4
+Failed: 0
+Skipped: 0
+
+Run:
+
+harbor run -p log-report --agent nop
+
+Then paste:
+
+reward.txt
+0
+
+CTRF summary:
+
+Passed: 1
+Failed: 3
+Skipped: 0
+
+(Use the actual numbers from your run.)
