@@ -1,0 +1,23 @@
+The task contained defects across all four Harbor authoring areas:
+
+Format
+
+task.toml declared artifacts as a string instead of a top-level array.
+The artifact path pointed to /app/out.json, while the task actually produces /app/report.json.
+allow_internet was enabled even though the task is completely offline.
+
+Environment
+
+The Docker base image was not pinned by digest, making builds non-reproducible.
+The reference solution (solution_hint.py) was leaked into the agent environment, allowing agents to inspect the answer.
+
+Verifier
+
+The verifier only checked that report.json existed and was non-empty.
+It did not validate the JSON contents, so incorrect outputs could receive full credit.
+tests/test.sh wrote reward.txt to the wrong location and did not generate ctrf.json, which is required by Harbor.
+
+Instructions
+
+instruction.md was ambiguous and did not specify the required output filename, JSON schema, or exact success criteria.
+The instructions were inconsistent with what the verifier should check.
