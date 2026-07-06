@@ -1,0 +1,30 @@
+Example bug introduced into solution/solve.py:
+
+json.dump(
+    {
+        "total_requests": 5,
+        "unique_ips": len(ips),
+        "top_path": paths.most_common(1)[0][0],
+    },
+    out,
+)
+
+After rerunning the verifier:
+
+reward.txt
+0
+
+Example CTRF summary:
+
+FAILED test_success_criterion_2_total_requests
+
+Expected:
+6
+
+Actual:
+5
+
+Passed: 3
+Failed: 1
+
+Again, paste the actual output from your machine.
